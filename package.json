@@ -1,0 +1,35 @@
+{
+  "name": "min",
+  "version": "1.0.0",
+  "description": "My Personal Website",
+  "author": "Kevin Zhang",
+  "license": "ISC",
+  "repository": "*",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "npm run build && node bin",
+    "monitor": "node_modules/.bin/nodemon --ignore app/public/ --ignore app/client/ bin",
+    "dev": "node_modules/.bin/webpack -d --watch --progress & npm run monitor",
+    "build": "node_modules/.bin/webpack -p"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "ejs": "*",
+    "express": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-router": "*"
+  },
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-polyfill": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-stage-0": "*",
+    "morgan": "^1.7.0",
+    "nodemon": "*",
+    "webpack": "*"
+  }
+}
