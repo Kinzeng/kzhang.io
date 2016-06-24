@@ -4,6 +4,7 @@ import config from '../../config'
 import middleware from './middleware'
 
 let app = middleware(express())
+let port = process.env.PORT || config.port
 
 app.all('*', (req, res) => {
   res.render('index')
@@ -17,8 +18,8 @@ app.use((err, req, res, next) => {
   })
 })
 
-app.listen(config.port, function () {
-  console.log('App listening on port ' + config.port)
+app.listen(port, function () {
+  console.log(`App listening on port ${port}`)
 })
 
 module.exports = app

@@ -31,5 +31,9 @@
     "morgan": "^1.7.0",
     "nodemon": "*",
     "webpack": "*"
+  },
+  "engines" : { 
+    "npm" : "3.9.5",
+    "node": "6.2.1"
   }
 }
