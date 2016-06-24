@@ -1,9 +1,8 @@
 {
-  "name": "min",
+  "name": "kzhang.io",
   "version": "1.0.0",
   "description": "My Personal Website",
   "author": "Kevin Zhang",
-  "license": "ISC",
   "repository": "*",
   "main": "server/index.js",
   "scripts": {
