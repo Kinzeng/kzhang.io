@@ -3,6 +3,8 @@ import express from 'express'
 import config from '../../config'
 import middleware from './middleware'
 
+console.log(config.env)
+
 let app = middleware(express())
 let port = process.env.PORT || config.port
 
@@ -11,7 +13,7 @@ app.all('*', (req, res) => {
 })
 
 app.use((err, req, res, next) => {
-  console.log('  Error: ' + err.status + ': ' + err.message)
+  console.log(`  Error: ${err.status}: ${err.message}`)
   return res.json({
     error: err.status,
     message: err.message
