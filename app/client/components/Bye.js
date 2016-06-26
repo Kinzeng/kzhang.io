@@ -7,7 +7,7 @@ export default class Bye extends React.Component {
 
   render () {
     return (
-      <div id='hello'>
+      <div>
         Bye World!
       </div>
     )

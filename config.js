@@ -8,7 +8,7 @@ const config = {
   },
 
   development: {
-    port: process.env.PORT || 8080,
+    port: 8080,
     env: 'development'
   }
 }

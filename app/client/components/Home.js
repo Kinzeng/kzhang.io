@@ -7,8 +7,8 @@ export default class Hello extends React.Component {
 
   render () {
     return (
-      <div id='hello'>
-        Hello World!
+      <div>
+        This is the homepage!
       </div>
     )
   }
