@@ -2,8 +2,8 @@
 import React from 'react'
 import {Router, Route, IndexRoute, browserHistory} from 'react-router'
 import App from '../containers/App'
-import Home from '../components/Home'
-import Bye from '../components/Bye'
+import Home from '../views/Home'
+import Bye from '../views/Bye'
 
 export default (
   <Router history={browserHistory}>

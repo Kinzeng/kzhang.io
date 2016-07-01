@@ -6,9 +6,14 @@ export default class Hello extends React.Component {
   }
 
   render () {
+    let page = []
+    for (let i = 0; i < 1000; i++) {
+      page.push(<div key={i}>This is the homepage! {i}</div>)
+    }
+
     return (
       <div>
-        This is the homepage!
+        {page}
       </div>
     )
   }

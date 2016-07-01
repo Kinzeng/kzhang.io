@@ -1,28 +1,54 @@
 import React from 'react'
-import {Link, withRouter} from 'react-router'
+import Button from '../Buttons/Button'
 
-const style = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-around'
+const toolbarProps = {
+  style: {
+    width: '100%',
+    display: 'block'
+  }
 }
 
-class Toolbar extends React.Component {
-  render () {
-    const items = this.props.items.map((item) => {
-      if (item.link) {
-        return <Link to={item.link} key={item.label}>{item.label}</Link>
-      } else {
-        return <span key={item.label}>{item.label}</span>
-      }
-    })
+const homeProps = {
+  style: {
+    float: 'left'
+  }
+}
 
+const navProps = {
+  style: {
+    float: 'right'
+  }
+}
+
+export default class Toolbar extends React.Component {
+  constructor () {
+    super()
+    this.items = [
+      {
+        label: 'Toolbar'
+      },
+      {
+        label: 'Homepage',
+        link: '/'
+      },
+      {
+        label: 'Bye',
+        link: '/bye'
+      }
+    ]
+  }
+
+  render () {
     return (
-      <div style={style}>
-        {items}
+      <div {...toolbarProps}>
+        <div {...homeProps}>
+          <Button label='Kevin Zhang' link='/' />
+        </div>
+
+        <div {...navProps}>
+          <Button label='Bye' link='/bye' />
+        </div>
       </div>
     )
   }
 }
-
-export default withRouter(Toolbar)

@@ -7,8 +7,21 @@ const appProps = {
     width: '100%',
     display: 'flex',
     flexFlow: 'column nowrap',
-    textAlign: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 1)'
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 1)',
+    fontFamily: 'Garamond'
+  }
+}
+
+const headerProps = {
+  style: {
+    width: '100%',
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    alignItems: 'center',
+    position: 'fixed',
+    backgroundColor: 'lightgray'
   }
 }
 
@@ -22,31 +35,14 @@ const imageProps = {
 }
 
 export default class App extends React.Component {
-  constructor (props) {
-    super(props)
-    this.toolBarItems = [
-      {
-        label: 'Toolbar'
-      },
-      {
-        label: 'Homepage',
-        link: '/'
-      },
-      {
-        label: 'Bye',
-        link: '/bye'
-      }
-    ]
-  }
-
   render () {
     return (
       <div {...appProps}>
-        <div>
+        <div {...headerProps}>
           <img {...imageProps} />
+          <Toolbar />
         </div>
-        <Toolbar items={this.toolBarItems} />
-        <div>{this.props.children}</div>
+        <div style={{marginTop: '118px'}}>{this.props.children}</div>
         <div>Footer</div>
       </div>
     )

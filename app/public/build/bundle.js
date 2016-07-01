@@ -29761,11 +29761,11 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _Home = __webpack_require__(/*! ../components/Home */ 531);
+	var _Home = __webpack_require__(/*! ../views/Home */ 532);
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _Bye = __webpack_require__(/*! ../components/Bye */ 532);
+	var _Bye = __webpack_require__(/*! ../views/Bye */ 533);
 	
 	var _Bye2 = _interopRequireDefault(_Bye);
 	
@@ -35579,8 +35579,21 @@
 	    width: '100%',
 	    display: 'flex',
 	    flexFlow: 'column nowrap',
-	    textAlign: 'center',
-	    backgroundColor: 'rgba(255, 255, 255, 1)'
+	    justifyContent: 'space-between',
+	    alignItems: 'center',
+	    backgroundColor: 'rgba(255, 255, 255, 1)',
+	    fontFamily: 'Garamond'
+	  }
+	};
+	
+	var headerProps = {
+	  style: {
+	    width: '100%',
+	    display: 'flex',
+	    flexFlow: 'column nowrap',
+	    alignItems: 'center',
+	    position: 'fixed',
+	    backgroundColor: 'lightgray'
 	  }
 	};
 	
@@ -35596,21 +35609,10 @@
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
 	
-	  function App(props) {
+	  function App() {
 	    _classCallCheck(this, App);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
-	
-	    _this.toolBarItems = [{
-	      label: 'Toolbar'
-	    }, {
-	      label: 'Homepage',
-	      link: '/'
-	    }, {
-	      label: 'Bye',
-	      link: '/bye'
-	    }];
-	    return _this;
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
 	  }
 	
 	  _createClass(App, [{
@@ -35621,13 +35623,13 @@
 	        appProps,
 	        _react2.default.createElement(
 	          'div',
-	          null,
-	          _react2.default.createElement('img', imageProps)
+	          headerProps,
+	          _react2.default.createElement('img', imageProps),
+	          _react2.default.createElement(_toolbar2.default, null)
 	        ),
-	        _react2.default.createElement(_toolbar2.default, { items: this.toolBarItems }),
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          { style: { marginTop: '118px' } },
 	          this.props.children
 	        ),
 	        _react2.default.createElement(
@@ -35663,6 +35665,103 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _Button = __webpack_require__(/*! ../Buttons/Button */ 531);
+	
+	var _Button2 = _interopRequireDefault(_Button);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var toolbarProps = {
+	  style: {
+	    width: '100%',
+	    display: 'block'
+	  }
+	};
+	
+	var homeProps = {
+	  style: {
+	    float: 'left'
+	  }
+	};
+	
+	var navProps = {
+	  style: {
+	    float: 'right'
+	  }
+	};
+	
+	var Toolbar = function (_React$Component) {
+	  _inherits(Toolbar, _React$Component);
+	
+	  function Toolbar() {
+	    _classCallCheck(this, Toolbar);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Toolbar).call(this));
+	
+	    _this.items = [{
+	      label: 'Toolbar'
+	    }, {
+	      label: 'Homepage',
+	      link: '/'
+	    }, {
+	      label: 'Bye',
+	      link: '/bye'
+	    }];
+	    return _this;
+	  }
+	
+	  _createClass(Toolbar, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        toolbarProps,
+	        _react2.default.createElement(
+	          'div',
+	          homeProps,
+	          _react2.default.createElement(_Button2.default, { label: 'Kevin Zhang', link: '/' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          navProps,
+	          _react2.default.createElement(_Button2.default, { label: 'Bye', link: '/bye' })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Toolbar;
+	}(_react2.default.Component);
+	
+	exports.default = Toolbar;
+
+/***/ },
+/* 531 */
+/*!*************************************************!*\
+  !*** ./app/client/components/Buttons/Button.js ***!
+  \*************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 300);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _reactRouter = __webpack_require__(/*! react-router */ 467);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -35673,58 +35772,87 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var style = {
-	  display: 'flex',
-	  flexDirection: 'row',
-	  justifyContent: 'space-around'
+	var buttonProps = {
+	  style: {
+	    border: 'none',
+	    outline: 'none',
+	    color: 'black',
+	    textDecoration: 'none',
+	    backgroundColor: 'white'
+	  }
 	};
 	
-	var Toolbar = function (_React$Component) {
-	  _inherits(Toolbar, _React$Component);
+	var hoverStyle = {
+	  color: 'rgb(150, 150, 150)'
+	};
 	
-	  function Toolbar() {
-	    _classCallCheck(this, Toolbar);
+	var Button = function (_React$Component) {
+	  _inherits(Button, _React$Component);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Toolbar).apply(this, arguments));
+	  function Button(props) {
+	    _classCallCheck(this, Button);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Button).call(this, props));
+	
+	    _this.state = { hover: false };
+	    return _this;
 	  }
 	
-	  _createClass(Toolbar, [{
+	  _createClass(Button, [{
+	    key: 'onMouseEnter',
+	    value: function onMouseEnter() {
+	      this.setState({ hover: true });
+	    }
+	  }, {
+	    key: 'onMouseLeave',
+	    value: function onMouseLeave() {
+	      this.setState({ hover: false });
+	    }
+	  }, {
+	    key: 'calculateStyle',
+	    value: function calculateStyle() {
+	      var style = buttonProps.style;
+	
+	      if (this.state.hover) {
+	        style = _extends({}, style, hoverStyle);
+	      }
+	
+	      if (this.props.style) {
+	        style = _extends({}, style, this.props.style);
+	      }
+	
+	      return style;
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var items = this.props.items.map(function (item) {
-	        if (item.link) {
-	          return _react2.default.createElement(
-	            _reactRouter.Link,
-	            { to: item.link, key: item.label },
-	            item.label
-	          );
-	        } else {
-	          return _react2.default.createElement(
-	            'span',
-	            { key: item.label },
-	            item.label
-	          );
-	        }
-	      });
+	      var style = this.calculateStyle();
+	      var onMouseEnter = this.onMouseEnter.bind(this);
+	      var onMouseLeave = this.onMouseLeave.bind(this);
+	      var props = { style: style, onMouseEnter: onMouseEnter, onMouseLeave: onMouseLeave };
 	
 	      return _react2.default.createElement(
-	        'div',
-	        { style: style },
-	        items
+	        _reactRouter.Link,
+	        _extends({ to: this.props.link }, props),
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          this.props.label
+	        )
 	      );
 	    }
 	  }]);
 	
-	  return Toolbar;
+	  return Button;
 	}(_react2.default.Component);
 	
-	exports.default = (0, _reactRouter.withRouter)(Toolbar);
+	exports.default = Button;
 
 /***/ },
-/* 531 */
-/*!***************************************!*\
-  !*** ./app/client/components/Home.js ***!
-  \***************************************/
+/* 532 */
+/*!**********************************!*\
+  !*** ./app/client/views/Home.js ***!
+  \**********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35759,10 +35887,20 @@
 	  _createClass(Hello, [{
 	    key: 'render',
 	    value: function render() {
+	      var page = [];
+	      for (var i = 0; i < 1000; i++) {
+	        page.push(_react2.default.createElement(
+	          'div',
+	          { key: i },
+	          'This is the homepage! ',
+	          i
+	        ));
+	      }
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        'This is the homepage!'
+	        page
 	      );
 	    }
 	  }]);
@@ -35773,10 +35911,10 @@
 	exports.default = Hello;
 
 /***/ },
-/* 532 */
-/*!**************************************!*\
-  !*** ./app/client/components/Bye.js ***!
-  \**************************************/
+/* 533 */
+/*!*********************************!*\
+  !*** ./app/client/views/Bye.js ***!
+  \*********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
