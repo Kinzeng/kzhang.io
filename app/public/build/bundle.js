@@ -35605,23 +35605,48 @@
 	};
 	
 	var viewProps = {
-	  style: {
+	  defaultStyle: {
 	    marginTop: '0px'
+	  },
+	  navbarFixedStyle: {
+	    marginTop: '18px'
 	  }
 	};
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
 	
-	  function App() {
+	  function App(props) {
 	    _classCallCheck(this, App);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
+	
+	    _this.state = { scroll: 0 };
+	    return _this;
 	  }
 	
 	  _createClass(App, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.setState({ scroll: window.scrollY });
+	      window.addEventListener('scroll', this.handleScroll.bind(this));
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      window.removeEventListener('scroll', this.handleScroll.bind(this));
+	    }
+	  }, {
+	    key: 'handleScroll',
+	    value: function handleScroll() {
+	      this.setState({ scroll: window.scrollY });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var fixed = this.state.scroll >= 100;
+	      var viewStyle = fixed ? viewProps.navbarFixedStyle : viewProps.defaultStyle;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        appProps,
@@ -35629,11 +35654,11 @@
 	          'div',
 	          headerProps,
 	          _react2.default.createElement('img', imageProps),
-	          _react2.default.createElement(_Navbar2.default, null)
+	          _react2.default.createElement(_Navbar2.default, { fixed: fixed })
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          viewProps,
+	          { style: viewStyle },
 	          this.props.children
 	        ),
 	        _react2.default.createElement(
@@ -35917,7 +35942,8 @@
 	    display: 'block',
 	    position: 'fixed',
 	    top: '0px',
-	    left: '12.5%'
+	    left: '12.5%',
+	    backgroundColor: 'gray'
 	  }
 	};
 	
@@ -35936,35 +35962,16 @@
 	var Navbar = function (_React$Component) {
 	  _inherits(Navbar, _React$Component);
 	
-	  function Navbar(props) {
+	  function Navbar() {
 	    _classCallCheck(this, Navbar);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this, props));
-	
-	    _this.state = { scroll: 0 };
-	    return _this;
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).apply(this, arguments));
 	  }
 	
 	  _createClass(Navbar, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.setState({ scroll: window.scrollY });
-	      window.addEventListener('scroll', this.handleScroll.bind(this));
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      window.removeEventListener('scroll', this.handleScroll.bind(this));
-	    }
-	  }, {
-	    key: 'handleScroll',
-	    value: function handleScroll() {
-	      this.setState({ scroll: window.scrollY });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var navbarStyle = this.state.scroll > 100 ? navbarProps.fixedStyle : navbarProps.defaultStyle;
+	      var navbarStyle = this.props.fixed ? navbarProps.fixedStyle : navbarProps.defaultStyle;
 	
 	      return _react2.default.createElement(
 	        'div',

@@ -33,21 +33,45 @@ const imageProps = {
 }
 
 const viewProps = {
-  style: {
+  defaultStyle: {
     marginTop: '0px'
+  },
+  navbarFixedStyle: {
+    marginTop: '18px'
   }
 }
 
 export default class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {scroll: 0}
+  }
+
+  componentDidMount () {
+    this.setState({scroll: window.scrollY})
+    window.addEventListener('scroll', this.handleScroll.bind(this))
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('scroll', this.handleScroll.bind(this))
+  }
+
+  handleScroll () {
+    this.setState({scroll: window.scrollY})
+  }
+
   render () {
+    const fixed = this.state.scroll >= 100
+    const viewStyle = fixed ? viewProps.navbarFixedStyle : viewProps.defaultStyle
+
     return (
       <div {...appProps}>
         <div {...headerProps}>
           <img {...imageProps} />
-          <Navbar />
+          <Navbar fixed={fixed} />
         </div>
 
-        <div {...viewProps}>
+        <div style={viewStyle}>
           {this.props.children}
         </div>
 

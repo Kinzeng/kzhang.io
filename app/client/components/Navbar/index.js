@@ -12,7 +12,8 @@ const navbarProps = {
     display: 'block',
     position: 'fixed',
     top: '0px',
-    left: '12.5%'
+    left: '12.5%',
+    backgroundColor: 'gray'
   }
 }
 
@@ -29,26 +30,8 @@ const navProps = {
 }
 
 export default class Navbar extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {scroll: 0}
-  }
-
-  componentDidMount () {
-    this.setState({scroll: window.scrollY})
-    window.addEventListener('scroll', this.handleScroll.bind(this))
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('scroll', this.handleScroll.bind(this))
-  }
-
-  handleScroll () {
-    this.setState({scroll: window.scrollY})
-  }
-
   render () {
-    let navbarStyle = this.state.scroll > 100 ? navbarProps.fixedStyle : navbarProps.defaultStyle
+    let navbarStyle = this.props.fixed ? navbarProps.fixedStyle : navbarProps.defaultStyle
 
     return (
       <div {...navbarProps} style={navbarStyle}>
