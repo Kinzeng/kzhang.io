@@ -16,8 +16,8 @@ app.use((err, req, res, next) => {
   })
 })
 
-app.listen(config.port, function () {
-  console.log(`App listening on port ${config.port}`)
+app.listen(config.port, config.host, function () {
+  console.log(`App listening on ${config.host}:${config.port}`)
 })
 
 module.exports = app

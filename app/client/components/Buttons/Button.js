@@ -7,7 +7,7 @@ const buttonProps = {
     outline: 'none',
     color: 'black',
     textDecoration: 'none',
-    backgroundColor: 'white'
+    backgroundColor: 'clear'
   }
 }
 

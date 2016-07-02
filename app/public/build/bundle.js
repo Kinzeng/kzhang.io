@@ -35561,9 +35561,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _toolbar = __webpack_require__(/*! ../components/toolbar */ 530);
+	var _Navbar = __webpack_require__(/*! ../components/Navbar */ 534);
 	
-	var _toolbar2 = _interopRequireDefault(_toolbar);
+	var _Navbar2 = _interopRequireDefault(_Navbar);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -35581,18 +35581,16 @@
 	    flexFlow: 'column nowrap',
 	    justifyContent: 'space-between',
 	    alignItems: 'center',
-	    backgroundColor: 'rgba(255, 255, 255, 1)',
+	    backgroundColor: 'rgba(255, 255, 255, 0)',
 	    fontFamily: 'Garamond'
 	  }
 	};
 	
 	var headerProps = {
 	  style: {
-	    width: '100%',
-	    display: 'flex',
-	    flexFlow: 'column nowrap',
-	    alignItems: 'center',
-	    position: 'fixed',
+	    width: '75%',
+	    textAlign: 'center',
+	    // position: 'fixed',
 	    backgroundColor: 'lightgray'
 	  }
 	};
@@ -35604,6 +35602,12 @@
 	    borderRadius: '100%'
 	  },
 	  src: 'https://lh3.googleusercontent.com/-HCpqSkPmnNY/AAAAAAAAAAI/AAAAAAAAAAo/Z69759Z5s5s/s160-c-k-no/photo.jpg'
+	};
+	
+	var viewProps = {
+	  style: {
+	    marginTop: '0px'
+	  }
 	};
 	
 	var App = function (_React$Component) {
@@ -35625,11 +35629,11 @@
 	          'div',
 	          headerProps,
 	          _react2.default.createElement('img', imageProps),
-	          _react2.default.createElement(_toolbar2.default, null)
+	          _react2.default.createElement(_Navbar2.default, null)
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { style: { marginTop: '118px' } },
+	          viewProps,
 	          this.props.children
 	        ),
 	        _react2.default.createElement(
@@ -35647,101 +35651,7 @@
 	exports.default = App;
 
 /***/ },
-/* 530 */
-/*!************************************************!*\
-  !*** ./app/client/components/toolbar/index.js ***!
-  \************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 300);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Button = __webpack_require__(/*! ../Buttons/Button */ 531);
-	
-	var _Button2 = _interopRequireDefault(_Button);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var toolbarProps = {
-	  style: {
-	    width: '100%',
-	    display: 'block'
-	  }
-	};
-	
-	var homeProps = {
-	  style: {
-	    float: 'left'
-	  }
-	};
-	
-	var navProps = {
-	  style: {
-	    float: 'right'
-	  }
-	};
-	
-	var Toolbar = function (_React$Component) {
-	  _inherits(Toolbar, _React$Component);
-	
-	  function Toolbar() {
-	    _classCallCheck(this, Toolbar);
-	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Toolbar).call(this));
-	
-	    _this.items = [{
-	      label: 'Toolbar'
-	    }, {
-	      label: 'Homepage',
-	      link: '/'
-	    }, {
-	      label: 'Bye',
-	      link: '/bye'
-	    }];
-	    return _this;
-	  }
-	
-	  _createClass(Toolbar, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        toolbarProps,
-	        _react2.default.createElement(
-	          'div',
-	          homeProps,
-	          _react2.default.createElement(_Button2.default, { label: 'Kevin Zhang', link: '/' })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          navProps,
-	          _react2.default.createElement(_Button2.default, { label: 'Bye', link: '/bye' })
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Toolbar;
-	}(_react2.default.Component);
-	
-	exports.default = Toolbar;
-
-/***/ },
+/* 530 */,
 /* 531 */
 /*!*************************************************!*\
   !*** ./app/client/components/Buttons/Button.js ***!
@@ -35778,7 +35688,7 @@
 	    outline: 'none',
 	    color: 'black',
 	    textDecoration: 'none',
-	    backgroundColor: 'white'
+	    backgroundColor: 'clear'
 	  }
 	};
 	
@@ -35961,6 +35871,122 @@
 	}(_react2.default.Component);
 	
 	exports.default = Bye;
+
+/***/ },
+/* 534 */
+/*!***********************************************!*\
+  !*** ./app/client/components/Navbar/index.js ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 300);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Button = __webpack_require__(/*! ../Buttons/Button */ 531);
+	
+	var _Button2 = _interopRequireDefault(_Button);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	// import ExecutionEnvironment from 'fbjs/lib/ExecutionEnvironment'
+	
+	
+	var navbarProps = {
+	  defaultStyle: {
+	    width: '100%',
+	    display: 'block'
+	  },
+	  fixedStyle: {
+	    width: '75%',
+	    display: 'block',
+	    position: 'fixed',
+	    top: '0px',
+	    left: '12.5%'
+	  }
+	};
+	
+	var homeProps = {
+	  style: {
+	    float: 'left'
+	  }
+	};
+	
+	var navProps = {
+	  style: {
+	    float: 'right'
+	  }
+	};
+	
+	var Navbar = function (_React$Component) {
+	  _inherits(Navbar, _React$Component);
+	
+	  function Navbar(props) {
+	    _classCallCheck(this, Navbar);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this, props));
+	
+	    _this.state = { scroll: 0 };
+	    return _this;
+	  }
+	
+	  _createClass(Navbar, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.setState({ scroll: window.scrollY });
+	      window.addEventListener('scroll', this.handleScroll.bind(this));
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      window.removeEventListener('scroll', this.handleScroll.bind(this));
+	    }
+	  }, {
+	    key: 'handleScroll',
+	    value: function handleScroll() {
+	      this.setState({ scroll: window.scrollY });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var navbarStyle = this.state.scroll > 100 ? navbarProps.fixedStyle : navbarProps.defaultStyle;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        _extends({}, navbarProps, { style: navbarStyle }),
+	        _react2.default.createElement(
+	          'div',
+	          homeProps,
+	          _react2.default.createElement(_Button2.default, { label: 'Kevin Zhang', link: '/' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          navProps,
+	          _react2.default.createElement(_Button2.default, { label: 'Bye', link: '/bye' })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Navbar;
+	}(_react2.default.Component);
+	
+	exports.default = Navbar;
 
 /***/ }
 /******/ ]);
