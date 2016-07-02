@@ -1,5 +1,4 @@
 import React from 'react'
-// import ExecutionEnvironment from 'fbjs/lib/ExecutionEnvironment'
 import Button from '../Buttons/Button'
 
 const navbarProps = {
@@ -7,12 +6,11 @@ const navbarProps = {
     width: '100%',
     display: 'block'
   },
-  fixedStyle: {
+  fixedStyle: { // when the user scrolls past the navbar, fix it to the top
     width: '75%',
     display: 'block',
     position: 'fixed',
-    top: '0px',
-    left: '12.5%',
+    top: '0%',
     backgroundColor: 'gray'
   }
 }
@@ -29,6 +27,10 @@ const navProps = {
   }
 }
 
+const buttonStyle = {
+  fontSize: '1em' // placeholder
+}
+
 export default class Navbar extends React.Component {
   render () {
     let navbarStyle = this.props.fixed ? navbarProps.fixedStyle : navbarProps.defaultStyle
@@ -36,11 +38,11 @@ export default class Navbar extends React.Component {
     return (
       <div {...navbarProps} style={navbarStyle}>
         <div {...homeProps}>
-          <Button label='Kevin Zhang' link='/' />
+          <Button label='Kevin Zhang' link='/' style={buttonStyle} />
         </div>
 
         <div {...navProps}>
-          <Button label='Bye' link='/bye' />
+          <Button label='Bye' link='/bye' style={buttonStyle} />
         </div>
       </div>
     )

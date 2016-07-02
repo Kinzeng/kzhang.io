@@ -35561,7 +35561,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Navbar = __webpack_require__(/*! ../components/Navbar */ 534);
+	var _Navbar = __webpack_require__(/*! ../components/Navbar */ 530);
 	
 	var _Navbar2 = _interopRequireDefault(_Navbar);
 	
@@ -35575,23 +35575,23 @@
 	
 	var appProps = {
 	  style: {
-	    height: '100%',
+	    minHeight: '100%', // flexbox for Safari
 	    width: '100%',
 	    display: 'flex',
-	    flexFlow: 'column nowrap',
-	    justifyContent: 'space-between',
-	    alignItems: 'center',
-	    backgroundColor: 'rgba(255, 255, 255, 0)',
-	    fontFamily: 'Garamond'
+	    flexFlow: 'column nowrap', // doesn't make sense to wrap
+	    justifyContent: 'space-between', // header and footer at the extremes
+	    alignItems: 'stretch',
+	    backgroundColor: 'rgba(255, 255, 255, 0)', // placeholder
+	    fontFamily: 'Georgia, serif'
 	  }
 	};
 	
 	var headerProps = {
 	  style: {
-	    width: '75%',
-	    textAlign: 'center',
-	    // position: 'fixed',
-	    backgroundColor: 'lightgray'
+	    width: '100%',
+	    minHeight: '119px', // keep view under navbar
+	    textAlign: 'center', // align the image to the center
+	    alignSelf: 'center'
 	  }
 	};
 	
@@ -35605,11 +35605,14 @@
 	};
 	
 	var viewProps = {
-	  defaultStyle: {
-	    marginTop: '0px'
-	  },
-	  navbarFixedStyle: {
-	    marginTop: '18px'
+	  style: {
+	    margin: '0% 5%'
+	  }
+	};
+	
+	var footerProps = {
+	  style: {
+	    alignSelf: 'center'
 	  }
 	};
 	
@@ -35621,7 +35624,7 @@
 	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 	
-	    _this.state = { scroll: 0 };
+	    _this.state = { fixed: false };
 	    return _this;
 	  }
 	
@@ -35638,15 +35641,12 @@
 	    }
 	  }, {
 	    key: 'handleScroll',
-	    value: function handleScroll() {
-	      this.setState({ scroll: window.scrollY });
+	    value: function handleScroll(event) {
+	      this.setState({ fixed: window.scrollY >= 100 });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var fixed = this.state.scroll >= 100;
-	      var viewStyle = fixed ? viewProps.navbarFixedStyle : viewProps.defaultStyle;
-	
 	      return _react2.default.createElement(
 	        'div',
 	        appProps,
@@ -35654,16 +35654,16 @@
 	          'div',
 	          headerProps,
 	          _react2.default.createElement('img', imageProps),
-	          _react2.default.createElement(_Navbar2.default, { fixed: fixed })
+	          _react2.default.createElement(_Navbar2.default, { fixed: this.state.fixed })
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { style: viewStyle },
+	          viewProps,
 	          this.props.children
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          footerProps,
 	          'Footer'
 	        )
 	      );
@@ -35676,7 +35676,105 @@
 	exports.default = App;
 
 /***/ },
-/* 530 */,
+/* 530 */
+/*!***********************************************!*\
+  !*** ./app/client/components/Navbar/index.js ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 300);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Button = __webpack_require__(/*! ../Buttons/Button */ 531);
+	
+	var _Button2 = _interopRequireDefault(_Button);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var navbarProps = {
+	  defaultStyle: {
+	    width: '100%',
+	    display: 'block'
+	  },
+	  fixedStyle: { // when the user scrolls past the navbar, fix it to the top
+	    width: '75%',
+	    display: 'block',
+	    position: 'fixed',
+	    top: '0%',
+	    backgroundColor: 'gray'
+	  }
+	};
+	
+	var homeProps = {
+	  style: {
+	    float: 'left'
+	  }
+	};
+	
+	var navProps = {
+	  style: {
+	    float: 'right'
+	  }
+	};
+	
+	var buttonStyle = {
+	  fontSize: '1em' // placeholder
+	};
+	
+	var Navbar = function (_React$Component) {
+	  _inherits(Navbar, _React$Component);
+	
+	  function Navbar() {
+	    _classCallCheck(this, Navbar);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).apply(this, arguments));
+	  }
+	
+	  _createClass(Navbar, [{
+	    key: 'render',
+	    value: function render() {
+	      var navbarStyle = this.props.fixed ? navbarProps.fixedStyle : navbarProps.defaultStyle;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        _extends({}, navbarProps, { style: navbarStyle }),
+	        _react2.default.createElement(
+	          'div',
+	          homeProps,
+	          _react2.default.createElement(_Button2.default, { label: 'Kevin Zhang', link: '/', style: buttonStyle })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          navProps,
+	          _react2.default.createElement(_Button2.default, { label: 'Bye', link: '/bye', style: buttonStyle })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Navbar;
+	}(_react2.default.Component);
+	
+	exports.default = Navbar;
+
+/***/ },
 /* 531 */
 /*!*************************************************!*\
   !*** ./app/client/components/Buttons/Button.js ***!
@@ -35743,6 +35841,9 @@
 	    value: function onMouseLeave() {
 	      this.setState({ hover: false });
 	    }
+	
+	    // change style based on props and hover
+	
 	  }, {
 	    key: 'calculateStyle',
 	    value: function calculateStyle() {
@@ -35769,11 +35870,7 @@
 	      return _react2.default.createElement(
 	        _reactRouter.Link,
 	        _extends({ to: this.props.link }, props),
-	        _react2.default.createElement(
-	          'span',
-	          null,
-	          this.props.label
-	        )
+	        this.props.label
 	      );
 	    }
 	  }]);
@@ -35896,104 +35993,6 @@
 	}(_react2.default.Component);
 	
 	exports.default = Bye;
-
-/***/ },
-/* 534 */
-/*!***********************************************!*\
-  !*** ./app/client/components/Navbar/index.js ***!
-  \***********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 300);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Button = __webpack_require__(/*! ../Buttons/Button */ 531);
-	
-	var _Button2 = _interopRequireDefault(_Button);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	// import ExecutionEnvironment from 'fbjs/lib/ExecutionEnvironment'
-	
-	
-	var navbarProps = {
-	  defaultStyle: {
-	    width: '100%',
-	    display: 'block'
-	  },
-	  fixedStyle: {
-	    width: '75%',
-	    display: 'block',
-	    position: 'fixed',
-	    top: '0px',
-	    left: '12.5%',
-	    backgroundColor: 'gray'
-	  }
-	};
-	
-	var homeProps = {
-	  style: {
-	    float: 'left'
-	  }
-	};
-	
-	var navProps = {
-	  style: {
-	    float: 'right'
-	  }
-	};
-	
-	var Navbar = function (_React$Component) {
-	  _inherits(Navbar, _React$Component);
-	
-	  function Navbar() {
-	    _classCallCheck(this, Navbar);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).apply(this, arguments));
-	  }
-	
-	  _createClass(Navbar, [{
-	    key: 'render',
-	    value: function render() {
-	      var navbarStyle = this.props.fixed ? navbarProps.fixedStyle : navbarProps.defaultStyle;
-	
-	      return _react2.default.createElement(
-	        'div',
-	        _extends({}, navbarProps, { style: navbarStyle }),
-	        _react2.default.createElement(
-	          'div',
-	          homeProps,
-	          _react2.default.createElement(_Button2.default, { label: 'Kevin Zhang', link: '/' })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          navProps,
-	          _react2.default.createElement(_Button2.default, { label: 'Bye', link: '/bye' })
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Navbar;
-	}(_react2.default.Component);
-	
-	exports.default = Navbar;
 
 /***/ }
 /******/ ]);

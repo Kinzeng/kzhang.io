@@ -3,23 +3,23 @@ import Navbar from '../components/Navbar'
 
 const appProps = {
   style: {
-    height: '100%',
+    minHeight: '100%', // flexbox for Safari
     width: '100%',
     display: 'flex',
-    flexFlow: 'column nowrap',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0)',
-    fontFamily: 'Garamond'
+    flexFlow: 'column nowrap', // doesn't make sense to wrap
+    justifyContent: 'space-between', // header and footer at the extremes
+    alignItems: 'stretch',
+    backgroundColor: 'rgba(255, 255, 255, 0)', // placeholder
+    fontFamily: 'Georgia, serif'
   }
 }
 
 const headerProps = {
   style: {
-    width: '75%',
-    textAlign: 'center',
-    // position: 'fixed',
-    backgroundColor: 'lightgray'
+    width: '100%',
+    minHeight: '119px', // keep view under navbar
+    textAlign: 'center', // align the image to the center
+    alignSelf: 'center'
   }
 }
 
@@ -33,18 +33,21 @@ const imageProps = {
 }
 
 const viewProps = {
-  defaultStyle: {
-    marginTop: '0px'
-  },
-  navbarFixedStyle: {
-    marginTop: '18px'
+  style: {
+    margin: '0% 5%'
+  }
+}
+
+const footerProps = {
+  style: {
+    alignSelf: 'center'
   }
 }
 
 export default class App extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {scroll: 0}
+    this.state = {fixed: false}
   }
 
   componentDidMount () {
@@ -56,26 +59,23 @@ export default class App extends React.Component {
     window.removeEventListener('scroll', this.handleScroll.bind(this))
   }
 
-  handleScroll () {
-    this.setState({scroll: window.scrollY})
+  handleScroll (event) {
+    this.setState({fixed: window.scrollY >= 100})
   }
 
   render () {
-    const fixed = this.state.scroll >= 100
-    const viewStyle = fixed ? viewProps.navbarFixedStyle : viewProps.defaultStyle
-
     return (
       <div {...appProps}>
         <div {...headerProps}>
           <img {...imageProps} />
-          <Navbar fixed={fixed} />
+          <Navbar fixed={this.state.fixed} />
         </div>
 
-        <div style={viewStyle}>
+        <div {...viewProps}>
           {this.props.children}
         </div>
 
-        <div>Footer</div>
+        <div {...footerProps}>Footer</div>
       </div>
     )
   }

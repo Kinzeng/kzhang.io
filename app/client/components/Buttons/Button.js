@@ -29,6 +29,7 @@ export default class Button extends React.Component {
     this.setState({hover: false})
   }
 
+  // change style based on props and hover
   calculateStyle () {
     let style = buttonProps.style
 
@@ -57,7 +58,7 @@ export default class Button extends React.Component {
 
     return (
       <Link to={this.props.link} {...props}>
-        <span>{this.props.label}</span>
+        {this.props.label}
       </Link>
     )
   }
