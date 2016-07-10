@@ -10,7 +10,7 @@ const appProps = {
     justifyContent: 'space-between', // header and footer at the extremes
     alignItems: 'stretch',
     backgroundColor: 'rgba(255, 255, 255, 0)', // placeholder
-    fontFamily: 'Georgia, serif'
+    fontFamily: 'sans-serif'
   }
 }
 

@@ -24,11 +24,15 @@ morgan.format('custom', function developmentFormatLine (tokens, req, res) {
   return fn(tokens, req, res)
 })
 
-export default (app) => {
+export default (app, config) => {
   app.use(express.static(path.join(__dirname, '..', 'public')))
   app.use(bodyParser.urlencoded({ extended: true }))
   app.use(bodyParser.json())
-  app.use(morgan('custom'))
+  if (config.env === 'production') {
+    app.use(morgan('custom', {skip: (req, res) => { return (res.statusCode < 400 || req.url === '/favicon.ico') }}))
+  } else {
+    app.use(morgan('custom', {skip: (req, res) => { return req.url === '/favicon.ico' }}))
+  }
 
   app.set('views', 'app/client/views')
   app.set('view engine', 'ejs')

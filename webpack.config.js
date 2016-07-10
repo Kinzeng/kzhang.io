@@ -1,10 +1,12 @@
 
 var path = require('path')
+// var webpack = require('webpack')
 
 var BUILD_DIR = path.resolve(__dirname, 'app/public/build')
 var APP_DIR = path.resolve(__dirname, 'app/client')
 
 var config = {
+  devtool: 'cheap-module-source-map',
   stats: {
     assets: false,
     chunkModules: false,
@@ -27,13 +29,17 @@ var config = {
         test: /\.js?$/,
         include: APP_DIR,
         loaders: ['babel']
-      },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!'
       }
     ]
   }
+  // ,
+  // plugins: [
+  //   new webpack.DefinePlugin({
+  //     'process.env': {
+  //       'NODE_ENV': JSON.stringify('production')
+  //     }
+  //   })
+  // ]
 }
 
 module.exports = config

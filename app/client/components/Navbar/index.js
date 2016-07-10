@@ -3,21 +3,24 @@ import Button from '../Buttons/Button'
 
 const navbarProps = {
   defaultStyle: {
-    width: '100%',
-    display: 'block'
+    width: '75%',
+    display: 'block',
+    margin: 'auto'
   },
   fixedStyle: { // when the user scrolls past the navbar, fix it to the top
-    width: '75%',
+    width: '56.25%',
     display: 'block',
     position: 'fixed',
     top: '0%',
+    left: '21.875%',
     backgroundColor: 'gray'
   }
 }
 
 const homeProps = {
   style: {
-    float: 'left'
+    float: 'left',
+    fontWeight: 'bold'
   }
 }
 
