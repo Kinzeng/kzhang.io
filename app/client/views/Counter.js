@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../components/Buttons/Button'
 
-export default class Bye extends React.Component {
+export default class Counter extends React.Component {
   constructor (props) {
     super(props)
     this.state = {count: 0}
@@ -14,7 +14,8 @@ export default class Bye extends React.Component {
   render () {
     return (
       <div>
-        Bye
+        <Button onClick={this.onClick.bind(this)}>Increment</Button>
+        <span>{this.state.count}</span>
       </div>
     )
   }

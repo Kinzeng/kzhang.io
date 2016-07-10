@@ -4,10 +4,11 @@ import {HEADER_HEIGHT} from '../constants'
 
 const appProps = {
   style: {
-    minHeight: '100%', // flexbox for Safari
+    height: '100%', // Firefox
+    minHeight: '100%', // Safari
     width: '100%',
     display: 'flex',
-    flexFlow: 'column nowrap', // doesn't make sense to wrap
+    flexFlow: 'column nowrap',
     justifyContent: 'space-between', // header and footer at the extremes
     alignItems: 'stretch',
     backgroundColor: 'rgba(255, 255, 255, 0)', // placeholder

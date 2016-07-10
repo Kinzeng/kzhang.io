@@ -1,16 +1,20 @@
 import React from 'react'
 import Button from '../Buttons/Button'
+import NavButtons from './Navbuttons'
 import {NAV_WIDTH, NAV_FIXED_WIDTH, NAV_FIXED_LEFT} from '../../constants'
 
 const navbarProps = {
   defaultStyle: {
     width: NAV_WIDTH,
-    display: 'block',
-    margin: 'auto'
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: 'auto',
+    backgroundColor: 'lightgray'
   },
   fixedStyle: { // when the user scrolls past the navbar, fix it to the top
     width: NAV_FIXED_WIDTH,
-    display: 'block',
+    display: 'flex',
+    justifyContent: 'space-between',
     position: 'fixed',
     top: '0%',
     left: NAV_FIXED_LEFT,
@@ -20,14 +24,18 @@ const navbarProps = {
 
 const homeProps = {
   style: {
-    float: 'left',
+    width: '50%',
+    display: 'flex',
+    justifyContent: 'flex-start',
     fontWeight: 'bold'
   }
 }
 
 const navProps = {
   style: {
-    float: 'right'
+    width: '50%',
+    display: 'flex',
+    justifyContent: 'flex-end'
   }
 }
 
@@ -40,14 +48,15 @@ export default class Navbar extends React.Component {
     let navbarStyle = this.props.fixed ? navbarProps.fixedStyle : navbarProps.defaultStyle
 
     return (
-      <div {...navbarProps} style={navbarStyle}>
+      <div style={navbarStyle}>
         <div {...homeProps}>
           <Button link='/' style={buttonStyle}>Kevin Zhang</Button>
         </div>
 
-        <div {...navProps}>
+        <NavButtons {...navProps}>
+          <Button link='/counter' style={buttonStyle}>Counter</Button>
           <Button link='/bye' style={buttonStyle}>Bye</Button>
-        </div>
+        </NavButtons>
       </div>
     )
   }
