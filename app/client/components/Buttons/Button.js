@@ -3,16 +3,19 @@ import {Link} from 'react-router'
 
 const buttonProps = {
   style: {
-    border: 'none',
-    outline: 'none',
     color: 'black',
     textDecoration: 'none',
-    backgroundColor: 'clear'
+
+    userSelect: 'none', // don't allow highlight of the button
+    MozUserSelect: 'none',
+    WebkitUserSelect: 'none',
+    msUserSelect: 'none'
   }
 }
 
 const hoverStyle = {
-  color: 'rgb(150, 150, 150)'
+  color: 'rgb(150, 150, 150)',
+  cursor: 'pointer'
 }
 
 export default class Button extends React.Component {
@@ -54,12 +57,21 @@ export default class Button extends React.Component {
     const style = this.calculateStyle()
     const onMouseEnter = this.onMouseEnter.bind(this)
     const onMouseLeave = this.onMouseLeave.bind(this)
-    const props = {style, onMouseEnter, onMouseLeave}
+    const onClick = this.props.onClick
+    const props = {style, onMouseEnter, onMouseLeave, onClick}
 
-    return (
-      <Link to={this.props.link} {...props}>
-        {this.props.label}
-      </Link>
-    )
+    if (this.props.link) {
+      return (
+        <Link to={this.props.link} {...props}>
+          {this.props.children}
+        </Link>
+      )
+    } else {
+      return (
+        <span {...props}>
+          {this.props.children}
+        </span>
+      )
+    }
   }
 }

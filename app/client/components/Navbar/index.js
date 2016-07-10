@@ -42,11 +42,11 @@ export default class Navbar extends React.Component {
     return (
       <div {...navbarProps} style={navbarStyle}>
         <div {...homeProps}>
-          <Button label='Kevin Zhang' link='/' style={buttonStyle} />
+          <Button link='/' style={buttonStyle}>Kevin Zhang</Button>
         </div>
 
         <div {...navProps}>
-          <Button label='Bye' link='/bye' style={buttonStyle} />
+          <Button link='/bye' style={buttonStyle}>Bye</Button>
         </div>
       </div>
     )
