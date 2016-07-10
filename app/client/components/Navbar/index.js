@@ -1,18 +1,19 @@
 import React from 'react'
 import Button from '../Buttons/Button'
+import {NAV_WIDTH, NAV_FIXED_WIDTH, NAV_FIXED_LEFT} from '../../constants'
 
 const navbarProps = {
   defaultStyle: {
-    width: '75%',
+    width: NAV_WIDTH,
     display: 'block',
     margin: 'auto'
   },
   fixedStyle: { // when the user scrolls past the navbar, fix it to the top
-    width: '56.25%',
+    width: NAV_FIXED_WIDTH,
     display: 'block',
     position: 'fixed',
     top: '0%',
-    left: '21.875%',
+    left: NAV_FIXED_LEFT,
     backgroundColor: 'gray'
   }
 }

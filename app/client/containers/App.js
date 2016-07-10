@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import {HEADER_HEIGHT} from '../constants'
 
 const appProps = {
   style: {
@@ -17,7 +18,7 @@ const appProps = {
 const headerProps = {
   style: {
     width: '100%',
-    minHeight: '119px', // keep view under navbar
+    minHeight: HEADER_HEIGHT, // keep view under navbar
     textAlign: 'center', // align the image to the center
     alignSelf: 'center'
   }
