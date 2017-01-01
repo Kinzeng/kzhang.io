@@ -1,37 +1,24 @@
 import React from 'react'
+import DOM from 'react-dom'
+import scroll from 'smoothscroll'
 import Navbar from '../components/Navbar'
-import {HEADER_HEIGHT} from '../constants'
+import Page from './Page'
+import pages from '../pages'
+import {VIEWPORT_HEIGHT} from '../constants'
 
 const appProps = {
   style: {
-    height: '100%', // Firefox
-    minHeight: '100%', // Safari
+    position: 'relative',
+    minHeight: '100%',
     width: '100%',
+    backgroundColor: 'rgba(255, 255, 255, 0)', // placeholder
+    fontFamily: 'sans-serif',
+
     display: 'flex',
     flexFlow: 'column nowrap',
     justifyContent: 'space-between', // header and footer at the extremes
-    alignItems: 'stretch',
-    backgroundColor: 'rgba(255, 255, 255, 0)', // placeholder
-    fontFamily: 'sans-serif'
+    alignItems: 'stretch'
   }
-}
-
-const headerProps = {
-  style: {
-    width: '100%',
-    minHeight: HEADER_HEIGHT, // keep view under navbar
-    textAlign: 'center', // align the image to the center
-    alignSelf: 'center'
-  }
-}
-
-const imageProps = {
-  style: {
-    height: '100px',
-    width: '100px',
-    borderRadius: '100%'
-  },
-  src: 'https://lh3.googleusercontent.com/-HCpqSkPmnNY/AAAAAAAAAAI/AAAAAAAAAAo/Z69759Z5s5s/s160-c-k-no/photo.jpg'
 }
 
 const viewProps = {
@@ -40,16 +27,11 @@ const viewProps = {
   }
 }
 
-const footerProps = {
-  style: {
-    alignSelf: 'center'
-  }
-}
-
 export default class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {fixed: false}
+    this.pageRefs = []
   }
 
   componentDidMount () {
@@ -62,22 +44,27 @@ export default class App extends React.Component {
   }
 
   handleScroll (event) {
-    this.setState({fixed: window.scrollY >= 100})
+    this.setState({fixed: window.scrollY >= VIEWPORT_HEIGHT})
+  }
+
+  scroll (page) {
+    scroll(DOM.findDOMNode(this.pageRefs[page]))
   }
 
   render () {
+    const pageViews = pages.map((page, i) => {
+      const pageProps = {
+        ref: (ref) => { this.pageRefs[i] = ref },
+        key: i
+      }
+
+      return <Page {...pageProps}>{page}</Page>
+    })
+
     return (
       <div {...appProps}>
-        <div {...headerProps}>
-          <img {...imageProps} />
-          <Navbar fixed={this.state.fixed} />
-        </div>
-
-        <div {...viewProps}>
-          {this.props.children}
-        </div>
-
-        <div {...footerProps}>Footer</div>
+        <Navbar fixed={this.state.fixed} scroll={this.scroll.bind(this)} />
+        {pageViews}
       </div>
     )
   }

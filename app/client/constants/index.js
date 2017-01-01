@@ -1,7 +1,6 @@
-export const HEADER_HEIGHT = '119px'
+export const VIEWPORT_HEIGHT = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+export const HEADER_HEIGHT = '18px'
 
-const bodyWidth = 0.75
-const navWidth = 0.75 // percentage of the body width
+const navWidth = 0.90 // percentage of the body width
 export const NAV_WIDTH = `${navWidth * 100}%`
-export const NAV_FIXED_WIDTH = `${bodyWidth * navWidth * 100}%` // different because % is calculated differently for fixed element
-export const NAV_FIXED_LEFT = `${100 * (1 - (bodyWidth * navWidth)) / 2}%` // offset from left side of screen
+export const NAV_LEFT = `${100 * (1 - navWidth) / 2}%` // offset from left side of screen

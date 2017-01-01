@@ -1,5 +1,14 @@
 import React from 'react'
-import Button from '../components/Buttons/Button'
+
+const containerStyle = {
+  height: '100%',
+  width: '100%',
+
+  display: 'flex',
+  flexFlow: 'column nowrap',
+  justifyContent: 'center',
+  alignItems: 'center'
+}
 
 export default class Bye extends React.Component {
   constructor (props) {
@@ -13,7 +22,7 @@ export default class Bye extends React.Component {
 
   render () {
     return (
-      <div>
+      <div style={containerStyle}>
         Bye
       </div>
     )

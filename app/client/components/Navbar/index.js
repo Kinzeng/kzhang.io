@@ -1,62 +1,65 @@
 import React from 'react'
 import Button from '../Buttons/Button'
-import NavButtons from './Navbuttons'
-import {NAV_WIDTH, NAV_FIXED_WIDTH, NAV_FIXED_LEFT} from '../../constants'
+import {NAV_WIDTH, NAV_LEFT} from '../../constants'
 
-const navbarProps = {
+const navbarStyles = {
   defaultStyle: {
-    width: NAV_WIDTH,
-    display: 'flex',
-    justifyContent: 'space-between',
+    position: 'absolute',
+    top: 0,
+    left: NAV_LEFT,
     margin: 'auto',
-    backgroundColor: 'lightgray'
+    width: NAV_WIDTH,
+    backgroundColor: 'lightgray',
+
+    display: 'flex',
+    justifyContent: 'space-between'
   },
   fixedStyle: { // when the user scrolls past the navbar, fix it to the top
-    width: NAV_FIXED_WIDTH,
-    display: 'flex',
-    justifyContent: 'space-between',
     position: 'fixed',
-    top: '0%',
-    left: NAV_FIXED_LEFT,
-    backgroundColor: 'gray'
+    top: 0,
+    left: NAV_LEFT,
+    width: NAV_WIDTH,
+    backgroundColor: 'gray',
+
+    display: 'flex',
+    justifyContent: 'space-between'
   }
 }
 
-const homeProps = {
-  style: {
-    width: '50%',
-    display: 'flex',
-    justifyContent: 'flex-start',
-    fontWeight: 'bold'
-  }
+const homeStyle = {
+  width: '50%',
+  fontWeight: 'bold',
+
+  display: 'flex',
+  justifyContent: 'flex-start'
 }
 
-const navProps = {
-  style: {
-    width: '50%',
-    display: 'flex',
-    justifyContent: 'flex-end'
-  }
+const navStyle = {
+  width: '50%',
+
+  display: 'flex',
+  justifyContent: 'flex-end'
 }
 
 const buttonStyle = {
+  marginLeft: '5%',
   fontSize: '1em' // placeholder
 }
 
 export default class Navbar extends React.Component {
   render () {
-    let navbarStyle = this.props.fixed ? navbarProps.fixedStyle : navbarProps.defaultStyle
+    const containerStyle = this.props.fixed ? navbarStyles.fixedStyle : navbarStyles.defaultStyle
 
     return (
-      <div style={navbarStyle}>
-        <div {...homeProps}>
-          <Button link='/' style={buttonStyle}>Kevin Zhang</Button>
+      <div style={containerStyle}>
+        <div style={homeStyle}>
+          <Button onClick={this.props.scroll.bind(null, 0)} style={buttonStyle}>Kevin Zhang</Button>
         </div>
 
-        <NavButtons {...navProps}>
-          <Button link='/counter' style={buttonStyle}>Counter</Button>
-          <Button link='/bye' style={buttonStyle}>Bye</Button>
-        </NavButtons>
+        <div style={navStyle}>
+          <Button onClick={this.props.scroll.bind(null, 1)} style={buttonStyle}>Bye</Button>
+          <Button onClick={this.props.scroll.bind(null, 2)} style={buttonStyle}>Counter</Button>
+        </div>
       </div>
     )
   }
