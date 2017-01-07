@@ -3,7 +3,6 @@ import React from 'react'
 const containerStyle = {
   height: '100%',
   width: '100%',
-  backgroundColor: 'black',
   color: 'white',
 
   display: 'flex',
@@ -12,11 +11,60 @@ const containerStyle = {
   alignItems: 'center'
 }
 
-export default class Hello extends React.Component {
+const imageProps = {
+  style: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    height: '100%',
+    width: '100%',
+    zIndex: -1
+  },
+  src: '/photos/background.jpg'
+}
+
+const textStyle = {
+  fontSize: '2em',
+
+  display: 'flex',
+  flexFlow: 'column nowrap',
+  justifyContent: 'flex-start',
+  alignItems: 'center'
+}
+
+const titleStyle = {
+  opacity: 0,
+  animation: 'fadeInUp 0.75s ease-out 0s forwards'
+}
+
+const subtitleStyle = {
+  opacity: 0,
+  marginTop: '1em',
+  fontSize: '0.75em',
+  textAlign: 'center',
+  animation: 'fadeInUp 0.75s ease-out 0.25s forwards'
+}
+
+const linkStyle = {
+  ...subtitleStyle,
+  cursor: 'pointer',
+  animation: 'fadeInUp 0.75s ease-out 0.5s forwards'
+}
+
+const arrowStyle = {
+  fontSize: '0.75em'
+}
+
+export default class Home extends React.Component {
   render () {
     return (
       <div style={containerStyle}>
-        Hello, World!
+        <img {...imageProps} />
+        <div style={textStyle}>
+          <div style={titleStyle}>Hi, I'm Kevin</div>
+          <div style={subtitleStyle}>Software has changed our lives, and I'm excited to be at the forefront.</div>
+          <div style={linkStyle} onClick={this.props.scroll.bind(null, 1, 1000)}>Let me show you why <span style={arrowStyle}>&#10095;&#10095;</span></div>
+        </div>
       </div>
     )
   }

@@ -1,6 +1,6 @@
 
 var path = require('path')
-// var webpack = require('webpack')
+var webpack = require('webpack')
 
 var BUILD_DIR = path.resolve(__dirname, 'app/public/build')
 var APP_DIR = path.resolve(__dirname, 'app/client')
@@ -28,18 +28,17 @@ var config = {
       {
         test: /\.js?$/,
         include: APP_DIR,
-        loaders: ['babel']
+        loader: 'babel-loader'
       }
     ]
-  }
-  // ,
-  // plugins: [
-  //   new webpack.DefinePlugin({
-  //     'process.env': {
-  //       'NODE_ENV': JSON.stringify('production')
-  //     }
-  //   })
-  // ]
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+      }
+    })
+  ]
 }
 
 module.exports = config

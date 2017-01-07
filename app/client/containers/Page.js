@@ -21,7 +21,7 @@ export default class Page extends React.Component {
 
     return (
       <div style={containerStyle}>
-        {this.props.children}
+        {React.cloneElement(this.props.children, {scroll: this.props.scroll})}
       </div>
     )
   }

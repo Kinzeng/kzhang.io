@@ -1,5 +1,5 @@
 import React from 'react'
-import DOM from 'react-dom'
+import {findDOMNode} from 'react-dom'
 import scroll from 'smoothscroll'
 import Navbar from '../components/Navbar'
 import Page from './Page'
@@ -18,12 +18,6 @@ const appProps = {
     flexFlow: 'column nowrap',
     justifyContent: 'space-between', // header and footer at the extremes
     alignItems: 'stretch'
-  }
-}
-
-const viewProps = {
-  style: {
-    margin: '0% 5%'
   }
 }
 
@@ -47,14 +41,15 @@ export default class App extends React.Component {
     this.setState({fixed: window.scrollY >= VIEWPORT_HEIGHT})
   }
 
-  scroll (page) {
-    scroll(DOM.findDOMNode(this.pageRefs[page]))
+  scroll (page, duration = 500) {
+    scroll(findDOMNode(this.pageRefs[page]), duration)
   }
 
   render () {
     const pageViews = pages.map((page, i) => {
       const pageProps = {
         ref: (ref) => { this.pageRefs[i] = ref },
+        scroll: this.scroll.bind(this),
         key: i
       }
 
