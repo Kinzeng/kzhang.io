@@ -1,6 +1,6 @@
 import React from 'react'
 import Home from './Home'
-import Bye from './Bye'
-import Counter from './Counter'
+import About from './About'
+import Projects from './Projects'
 
-export default [<Home />, <Bye />, <Counter />]
+export default [<Home />, <About />, <Projects />]

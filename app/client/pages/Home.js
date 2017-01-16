@@ -57,13 +57,18 @@ const arrowStyle = {
 
 export default class Home extends React.Component {
   render () {
+    const linkProps = {
+      style: linkStyle,
+      onClick: this.props.scroll.bind(null, 1, 1000)
+    }
+
     return (
       <div style={containerStyle}>
         <img {...imageProps} />
         <div style={textStyle}>
           <div style={titleStyle}>Hi, I'm Kevin</div>
-          <div style={subtitleStyle}>Software has changed our lives, and I'm excited to be at the forefront.</div>
-          <div style={linkStyle} onClick={this.props.scroll.bind(null, 1, 1000)}>Let me show you why <span style={arrowStyle}>&#10095;&#10095;</span></div>
+          <div style={subtitleStyle}>Technology has changed our lives, and I'm excited to be at the forefront.</div>
+          <div {...linkProps}>Let me show you why <span style={arrowStyle}>&#10095;&#10095;</span></div>
         </div>
       </div>
     )

@@ -16,7 +16,7 @@ const defaultStyle = {
   justifyContent: 'space-between'
 }
 
-const fixedStyle = { // when the user scrolls past the navbar, fix it to the top
+const fixedStyle = {
   ...defaultStyle,
   position: 'fixed'
 }
@@ -52,8 +52,8 @@ export default class Navbar extends React.Component {
         </div>
 
         <div style={navStyle}>
-          <Button onClick={this.props.scroll.bind(null, 1, 500)} style={buttonStyle}>Bye</Button>
-          <Button onClick={this.props.scroll.bind(null, 2, 500)} style={buttonStyle}>Counter</Button>
+          <Button onClick={this.props.scroll.bind(null, 1, 500)} style={buttonStyle}>About</Button>
+          <Button onClick={this.props.scroll.bind(null, 2, 500)} style={buttonStyle}>Projects</Button>
         </div>
       </div>
     )
