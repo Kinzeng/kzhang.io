@@ -1,10 +1,14 @@
 import React from 'react'
 
+const NUM_PER_ROW = 3
+const MARGIN = 2.5
+
 const containerStyle = {
-  margin: '1em',
+  boxSizing: 'border-box', // account for the 1px border
+  margin: `${MARGIN}%`,
   marginTop: 0,
   padding: '1.5em 0',
-  flex: '1 1 auto',
+  width: `${(100 - (NUM_PER_ROW * 2 * MARGIN)) / NUM_PER_ROW}%`, // calculate width to fit on a line
   border: '1px solid transparent',
   color: 'white',
   textDecoration: 'none',

@@ -10,7 +10,8 @@
     "monitor": "nodemon --ignore app/public/ --ignore app/client/ --exec npm run babel-node -- app/server",
     "dev": "webpack -d --watch --progress & npm run monitor",
     "build": "npm i && NODE_ENV=production webpack -p",
-    "start": "NODE_ENV=production babel-node app/server/index.js"
+    "start": "NODE_ENV=production babel-node app/server/index.js",
+    "sync": "npm run build && gsutil -mh 'Cache-Control:private' cp -r ./app/public/** gs://www.kzhang.io"
   },
   "dependencies": {
     "babel-cli": "^6.10.1",

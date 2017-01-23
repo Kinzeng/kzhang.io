@@ -34,14 +34,14 @@ const textStyle = {
 }
 
 const titleStyle = {
-  fontFamily: 'Signika',
+  fontFamily: 'Quicksand',
   fontSize: '2em',
   opacity: 0,
   animation: 'fadeInUp 0.75s ease-out 0s forwards'
 }
 
 const nameStyle = {
-  fontFamily: 'Signika'
+
 }
 
 const subtitleStyle = {
