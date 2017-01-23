@@ -1,9 +1,10 @@
 import React from 'react'
+import {text} from '../colors'
 
 const containerStyle = {
   height: '100%',
   width: '100%',
-  color: 'white',
+  color: text.string(),
 
   display: 'flex',
   flexFlow: 'column nowrap',
@@ -33,8 +34,14 @@ const textStyle = {
 }
 
 const titleStyle = {
+  fontFamily: 'Signika',
+  fontSize: '2em',
   opacity: 0,
   animation: 'fadeInUp 0.75s ease-out 0s forwards'
+}
+
+const nameStyle = {
+  fontFamily: 'Signika'
 }
 
 const subtitleStyle = {
@@ -66,7 +73,7 @@ export default class Home extends React.Component {
       <div style={containerStyle}>
         <img {...imageProps} />
         <div style={textStyle}>
-          <div style={titleStyle}>Hi, I'm Kevin</div>
+          <div style={titleStyle}>Hi, I'm <span style={nameStyle}>Kevin</span></div>
           <div style={subtitleStyle}>Technology has changed our lives, and I'm excited to be at the forefront.</div>
           <div {...linkProps}>Let me show you why <span style={arrowStyle}>&#10095;&#10095;</span></div>
         </div>
@@ -74,3 +81,5 @@ export default class Home extends React.Component {
     )
   }
 }
+
+export const background = 'transparent'

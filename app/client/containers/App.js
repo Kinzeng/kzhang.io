@@ -10,9 +10,9 @@ const appProps = {
   style: {
     position: 'relative',
     minHeight: '100%',
+    minWidth: '1100px',
     width: '100%',
     backgroundColor: 'rgba(255, 255, 255, 0)', // placeholder
-    fontFamily: 'sans-serif',
 
     display: 'flex',
     flexFlow: 'column nowrap',
@@ -26,6 +26,7 @@ export default class App extends React.Component {
     super(props)
     this.state = {fixed: false}
     this.pageRefs = []
+    this.backgrounds = []
   }
 
   componentDidMount () {
@@ -38,7 +39,10 @@ export default class App extends React.Component {
   }
 
   handleScroll (event) {
-    this.setState({fixed: window.scrollY >= VIEWPORT_HEIGHT})
+    this.setState({
+      fixed: window.scrollY >= VIEWPORT_HEIGHT,
+      background: this.backgrounds[Math.trunc(window.scrollY / VIEWPORT_HEIGHT)]
+    })
   }
 
   scroll (page, duration = 500) {
@@ -46,6 +50,12 @@ export default class App extends React.Component {
   }
 
   render () {
+    const navProps = {
+      fixed: this.state.fixed,
+      scroll: this.scroll.bind(this),
+      background: this.state.background
+    }
+
     const pageViews = pages.map((page, i) => {
       const pageProps = {
         ref: (ref) => { this.pageRefs[i] = ref },
@@ -53,12 +63,14 @@ export default class App extends React.Component {
         key: i
       }
 
-      return <Page {...pageProps}>{page}</Page>
+      this.backgrounds[i] = page.background
+
+      return <Page {...pageProps}>{page.component}</Page>
     })
 
     return (
       <div {...appProps}>
-        <Navbar fixed={this.state.fixed} scroll={this.scroll.bind(this)} />
+        <Navbar {...navProps} />
         {pageViews}
       </div>
     )
