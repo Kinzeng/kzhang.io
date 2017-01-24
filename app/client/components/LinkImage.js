@@ -18,8 +18,8 @@ export default class LinkImage extends React.Component {
       style: {
         ...linkStyle,
         ...this.props.linkStyle,
-        height: this.props.height || defaultHeight,
-        width: this.props.width || defaultWidth
+        height: !this.props.linkStyle ? (this.props.height || defaultHeight) : 'auto',
+        width: !this.props.linkStyle ? (this.props.width || defaultWidth) : 'auto'
       },
       href: this.props.link,
       target: '_blank'
@@ -36,4 +36,11 @@ export default class LinkImage extends React.Component {
       </a>
     )
   }
+}
+
+LinkImage.propTypes = {
+  height: React.PropTypes.string,
+  width: React.PropTypes.string,
+  link: React.PropTypes.string.isRequired,
+  image: React.PropTypes.string.isRequired
 }

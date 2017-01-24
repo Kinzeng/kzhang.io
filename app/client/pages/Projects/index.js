@@ -1,5 +1,6 @@
 import React from 'react'
 import Project from './Project'
+import LinkImage from '../../components/LinkImage'
 import {text, gray, blue, darkBlue} from '../../colors'
 import {titleStyle} from '..'
 import {projects} from '../../content'
@@ -28,7 +29,7 @@ const projectsContainerStyle = {
   alignItems: 'stretch'
 }
 
-const leftStyle = {
+const projectListStyle = {
   paddingTop: '1%',
   width: '50%',
   backgroundColor: darkBlue.string(),
@@ -48,7 +49,7 @@ const projectsStyle = {
   alignItems: 'center'
 }
 
-const rightStyle = {
+const previewStyle = {
   padding: '1%',
   paddingTop: '2%',
   width: '50%',
@@ -66,10 +67,9 @@ const projectTitleStyle = {
   margin: 0
 }
 
-const imageStyle = {
+const linkImageStyle = {
   marginTop: '2.5%',
-  maxWidth: '80%',
-  cursor: 'pointer'
+  maxWidth: '80%'
 }
 
 const defaultProject = {
@@ -103,22 +103,30 @@ export default class Projects extends React.Component {
       return <Project {...projectProps} />
     })
 
-    const imageProps = {
-      style: imageStyle,
-      src: this.state.project.imageUrl
+    const linkImageProps = {
+      linkStyle: {
+        height: 'auto',
+        width: 'auto',
+        cursor: 'default'
+      },
+      imageStyle: linkImageStyle,
+      link: this.state.project.url,
+      image: this.state.project.imageUrl
     }
 
     return (
       <div style={containerStyle}>
         <h1 style={titleStyle}>My Projects</h1>
         <div style={projectsContainerStyle}>
-          <div style={leftStyle}>
+          <div style={projectListStyle}>
             <div style={projectsStyle}>{projectBoxes}</div>
           </div>
-          <div style={rightStyle}>
+          <div style={previewStyle}>
             <h2 style={projectTitleStyle}>{this.state.project.title}</h2>
             <div>{this.state.project.description}</div>
-            <a style={{cursor: 'default'}} href={this.state.project.url}><img {...imageProps} /></a>
+            {this.state.project.imageUrl &&
+              <LinkImage {...linkImageProps} />
+            }
           </div>
         </div>
       </div>

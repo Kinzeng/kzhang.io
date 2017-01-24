@@ -34,7 +34,7 @@ const textStyle = {
 }
 
 const titleStyle = {
-  fontFamily: 'Quicksand',
+  fontFamily: 'Josefin-Slab',
   fontSize: '2em',
   opacity: 0,
   animation: 'fadeInUp 0.75s ease-out 0s forwards'
