@@ -65,7 +65,7 @@ export default class App extends React.Component {
 
       this.backgrounds[i] = page.background
 
-      return <Page {...pageProps}>{page.component}</Page>
+      return React.cloneElement(page.component, pageProps)
     })
 
     return (

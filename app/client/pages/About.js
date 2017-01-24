@@ -1,4 +1,5 @@
 import React from 'react'
+import {titleStyle} from '.'
 import {text, black} from '../colors'
 
 const containerStyle = {
@@ -16,12 +17,12 @@ const containerStyle = {
 
 const bioStyle = {
   marginTop: '2.5%',
-  width: '100%',
+  width: '80%',
 
   display: 'flex',
   flexFlow: 'row nowrap',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'flex-start'
 }
 
 const profileStyle = {
@@ -58,7 +59,7 @@ export default class About extends React.Component {
   render () {
     return (
       <div style={containerStyle}>
-        <h1>About Me</h1>
+        <h1 style={titleStyle}>About Me</h1>
         <div style={bioStyle}>
           <div style={profileStyle}>
             <img {...imageProps} />
