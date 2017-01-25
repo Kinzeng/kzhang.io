@@ -104,6 +104,5 @@ const createLink = createContent('links', [
 createLink('mailto:kevin@kzhang.io', '/photos/email.png')
 createLink('https://github.com/Kinzeng', '/photos/github.png')
 createLink('https://www.linkedin.com/in/kevin-zhang-09bb80ba', '/photos/linkedin.png')
-createLink('mailto:kevin@kzhang.io', '/photos/email.png')
 
 module.exports = content

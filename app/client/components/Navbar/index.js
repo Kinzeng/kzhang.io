@@ -44,9 +44,8 @@ const buttonStyle = {
 
 export default class Navbar extends React.Component {
   render () {
-    let containerStyle = this.props.fixed ? fixedStyle : defaultStyle
-    containerStyle = {
-      ...containerStyle,
+    let containerStyle = !this.props.fixed ? defaultStyle : {
+      ...fixedStyle,
       backgroundColor: this.props.background
     }
 

@@ -2,7 +2,6 @@ import React from 'react'
 import {findDOMNode} from 'react-dom'
 import scroll from 'smoothscroll'
 import Navbar from '../components/Navbar'
-import Page from './Page'
 import pages from '../pages'
 import {VIEWPORT_HEIGHT} from '../constants'
 
@@ -39,10 +38,14 @@ export default class App extends React.Component {
   }
 
   handleScroll (event) {
+    const pageOffset = window.scrollY / VIEWPORT_HEIGHT
     this.setState({
       fixed: window.scrollY >= VIEWPORT_HEIGHT,
-      background: this.backgrounds[Math.trunc(window.scrollY / VIEWPORT_HEIGHT)]
+      background: this.backgrounds[Math.trunc(pageOffset)] // change to current page's background
     })
+
+    // change body color to the page that's mostly on the screen
+    document.body.style.backgroundColor = this.backgrounds[Math.round(pageOffset)]
   }
 
   scroll (page, duration = 500) {

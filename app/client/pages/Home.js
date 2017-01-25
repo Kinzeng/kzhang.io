@@ -1,5 +1,7 @@
 import React from 'react'
-import {text} from '../colors'
+import {text, darkerBlue} from '../colors'
+
+export const background = darkerBlue.string()
 
 const containerStyle = {
   height: '100%',
@@ -34,7 +36,9 @@ const textStyle = {
 }
 
 const titleStyle = {
-  fontFamily: 'Josefin-Slab',
+  // fontFamily: 'Josefin-Slab',
+  // fontFamily: 'Questrial',
+  fontFamily: 'Alegreya',
   fontSize: '2em',
   opacity: 0,
   animation: 'fadeInUp 0.75s ease-out 0s forwards'
@@ -81,5 +85,3 @@ export default class Home extends React.Component {
     )
   }
 }
-
-export const background = 'transparent'

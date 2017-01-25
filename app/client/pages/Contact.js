@@ -17,6 +17,10 @@ const containerStyle = {
   alignItems: 'center'
 }
 
+const subtitleStyle = {
+  marginBottom: '2.5%'
+}
+
 const iconsStyle = {
   marginBottom: '5%',
   width: '50%',
@@ -39,7 +43,8 @@ export default class Contact extends React.Component {
 
     return (
       <div style={containerStyle}>
-        <h1 style={titleStyle}>Let's Get in Touch!</h1>
+        <h1 style={{...titleStyle, marginBottom: 0}}>Let's Get in Touch!</h1>
+        <p style={subtitleStyle}>And create something amazing together.</p>
         <div style={iconsStyle}>
           {linkImages}
         </div>
