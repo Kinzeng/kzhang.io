@@ -11,7 +11,7 @@ function createContent (contentName, fields) {
 
     const value = {}
 
-    for (let i = 0; i < arguments.length; i++) {
+    for (let i = 0; i < fields.length; i++) {
       value[fields[i]] = arguments[i]
     }
 
@@ -62,6 +62,19 @@ createProject(
   </div>,
   'http://givmo.kzhang.io',
   '/photos/givmo.png'
+)
+
+createProject(
+  'Socket.io Chat',
+  <div>
+    Socket.io Chat is a basic web application that uses socket.io to
+    provide real time functionality to the chat application. Users
+    select a username when they first open the application and can
+    message all the other users in the chat room. An "is typing"
+    feature is implemented that lets users see who else is currently typing.
+  </div>,
+  'https://github.com/Kinzeng/socket.io-chat',
+  '/photos/chat.png'
 )
 
 createProject(

@@ -70,7 +70,6 @@ const projectTitleStyle = {
 
 const linkImageStyle = {
   marginTop: '2.5%',
-  maxHeight: '50%',
   maxWidth: '80%'
 }
 
