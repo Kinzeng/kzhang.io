@@ -64,6 +64,20 @@ createProject(
   '/photos/givmo.png'
 )
 
+createProject(
+  'DnD Character Sheet',
+  <div>
+    DnD Character Sheet is the final project for Applied Internet
+    Technology, a class I took in Fall 2016. The application lets
+    users manage their Dungeons and Dragons characters on the web
+    instead of having them keep track of their characters on paper.
+    The app does a lot of calculations for the user so that they
+    don't have to.
+  </div>,
+  'https://github.com/Kinzeng/dnd-character-sheet',
+  '/photos/dnd.png'
+)
+
 const linkProps = {
   style: {
     color: text.string(),

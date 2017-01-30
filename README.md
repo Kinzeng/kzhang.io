@@ -43,7 +43,8 @@ To help you navigate through the project, here's the file structure:
 If you want to run my website locally:
   1. clone this repository onto your machine: `git clone https://github.com/Kinzeng/kzhang.io.git`
   2. cd into the project: `cd kzhang.io`
-  3. download dependencies: `npm i`
+  3. download dependencies: `npm install`
   4. build the client side code: `npm run build`
   5. start the server: `npm start`
       * if you want to start the server in dev mode (watch for changes): `npm run dev`
+  6. navigate to [http://localhost:8080](http://localhost:8080)
