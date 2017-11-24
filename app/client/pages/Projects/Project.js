@@ -37,8 +37,11 @@ export default class Project extends React.Component {
       style: this.props.active ? hoverStyle : containerStyle,
       onMouseEnter: this.props.hover.bind(null),
       // onMouseLeave: this.props.unhover.bind(null),
-      target: '_blank',
-      href: this.props.url
+      target: '_blank'
+    }
+
+    if (this.props.url) {
+        containerProps.href = this.props.url
     }
 
     return (

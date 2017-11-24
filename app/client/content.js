@@ -35,7 +35,7 @@ createProject(
     which I think deters users from wanting to use the apps. Jeopardizer
     let's you create and play games without such a hassle!
   </div>,
-  'http://jeopardizer.com',
+  null,
   '/photos/jeopardizer.png'
 )
 
@@ -118,6 +118,7 @@ const createSkill = createContent('skills', [
 createSkill('Java', 90)
 createSkill('Node', 90)
 createSkill('React', 90)
+createSkill('Scala', 80)
 createSkill('SQL', 75)
 createSkill('MongoDB', 70)
 createSkill('HTML/CSS', 95)

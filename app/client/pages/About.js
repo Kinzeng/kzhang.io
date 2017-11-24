@@ -45,7 +45,7 @@ const textStyle = {
   marginLeft: '2em',
   height: '100%',
   width: '40%',
-  fontSize: '1.25em',
+  fontSize: '1em',
   lineHeight: '1.5em',
 
   display: 'flex',
